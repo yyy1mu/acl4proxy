@@ -1,0 +1,265 @@
+# Proxy ACL
+# Updated: 2026-09-08
+#
+# Default traffic policy: proxy.
+# Advertising and tracking domains are intentionally not blocked.
+# Domain rules are preferred because service IP and CDN ranges change often.
+# The proxy_list is retained for ACL client compatibility and documentation.
+
+[proxy_all]
+# 默认代理；未匹配流量也通过代理，广告可以正常加载。
+
+[proxy_list]
+# 常用服务
+(^|\.)1password\.com$
+(^|\.)adguard\.com$
+(^|\.)adguard\.org$
+(^|\.)archive\.org$
+(^|\.)duckduckgo\.com$
+(^|\.)inoreader\.com$
+(^|\.)medium\.com$
+(^|\.)reddit\.com$
+(^|\.)soundcloud\.com$
+(^|\.)unsplash\.com$
+(^|\.)v2ex\.com$
+(^|\.)vimeo\.com$
+
+# 国家及地区顶级域名
+\.eu$
+\.hk$
+\.jp$
+\.kr$
+\.sg$
+\.tw$
+\.uk$
+
+# AI
+(^|\.)anthropic\.com$
+(^|\.)claude\.ai$
+(^|\.)chatgpt\.com$
+(^|\.)oaistatic\.com$
+(^|\.)oaiusercontent\.com$
+(^|\.)openai\.com$
+(^|\.)perplexity\.ai$
+
+# Amazon / AWS
+(^|\.)amazon\.com$
+(^|\.)amazon\.co\.jp$
+(^|\.)amazonaws\.com$
+(^|\.)awsstatic\.com$
+(^|\.)cloudfront\.net$
+(^|\.)primevideo\.com$
+
+# BBC
+(^|\.)bbc\.com$
+(^|\.)bbc\.co\.uk$
+(^|\.)bbci\.co\.uk$
+
+# 开发与软件仓库
+(^|\.)apache\.org$
+(^|\.)crates\.io$
+(^|\.)docker\.com$
+(^|\.)docker\.io$
+(^|\.)elastic\.co$
+(^|\.)elastic\.com$
+(^|\.)gitlab\.com$
+(^|\.)gitlab\.io$
+(^|\.)go\.dev$
+(^|\.)golang\.org$
+(^|\.)gradle\.org$
+(^|\.)jitpack\.io$
+(^|\.)maven\.org$
+(^|\.)mvnrepository\.com$
+(^|\.)npmjs\.com$
+(^|\.)npmjs\.org$
+(^|\.)nuget\.org$
+(^|\.)pypi\.org$
+(^|\.)pythonhosted\.org$
+(^|\.)quay\.io$
+(^|\.)rust-lang\.org$
+(^|\.)sourcegraph\.com$
+(^|\.)stackoverflow\.com$
+(^|\.)yarnpkg\.com$
+
+# Discord
+(^|\.)discord\.com$
+(^|\.)discord\.gg$
+(^|\.)discord\.media$
+(^|\.)discordapp\.com$
+(^|\.)discordapp\.net$
+
+# Meta / Facebook
+(^|\.)facebook\.com$
+(^|\.)facebook\.net$
+(^|\.)fb\.com$
+(^|\.)fb\.me$
+(^|\.)fbcdn\.net$
+(^|\.)fbsbx\.com$
+
+# GitHub
+(^|\.)github\.com$
+(^|\.)github\.io$
+(^|\.)github\.blog$
+(^|\.)githubapp\.com$
+(^|\.)githubassets\.com$
+(^|\.)githubstatus\.com$
+(^|\.)githubusercontent\.com$
+(^|\.)ghcr\.io$
+
+# Google 基础服务
+(^|\.)1e100\.net$
+(^|\.)g\.co$
+(^|\.)ggpht\.com$
+(^|\.)gmail\.com$
+(^|\.)google\.com$
+(^|\.)googleapis\.com$
+(^|\.)googleusercontent\.com$
+(^|\.)gstatic\.com$
+(^|\.)gvt0\.com$
+(^|\.)gvt1\.com$
+(^|\.)gvt2\.com$
+(^|\.)gvt3\.com$
+
+# YouTube
+(^|\.)googlevideo\.com$
+(^|\.)youtu\.be$
+(^|\.)youtube\.com$
+(^|\.)youtube-nocookie\.com$
+(^|\.)youtubeeducation\.com$
+(^|\.)yt\.be$
+(^|\.)ytimg\.com$
+
+# Instagram
+(^|\.)cdninstagram\.com$
+(^|\.)instagram\.com$
+(^|\.)instagr\.am$
+
+# Kakao / Daum
+(^|\.)daum\.net$
+(^|\.)kakao\.com$
+(^|\.)kakao\.co\.kr$
+(^|\.)kakaocdn\.net$
+
+# LINE
+(^|\.)lin\.ee$
+(^|\.)line-apps\.com$
+(^|\.)line-cdn\.net$
+(^|\.)line-scdn\.net$
+(^|\.)line\.me$
+(^|\.)line\.naver\.jp$
+
+# Microsoft / Microsoft 365 / Azure
+(^|\.)1drv\.com$
+(^|\.)aka\.ms$
+(^|\.)azure\.com$
+(^|\.)azure\.net$
+(^|\.)azureedge\.net$
+(^|\.)azurewebsites\.net$
+(^|\.)bing\.com$
+(^|\.)cloud\.microsoft$
+(^|\.)live\.com$
+(^|\.)microsoft\.com$
+(^|\.)microsoftonline\.com$
+(^|\.)msauth\.net$
+(^|\.)msftauth\.net$
+(^|\.)msftconnecttest\.com$
+(^|\.)office\.com$
+(^|\.)office\.net$
+(^|\.)office365\.com$
+(^|\.)onedrive\.com$
+(^|\.)onenote\.com$
+(^|\.)outlook\.com$
+(^|\.)sharepoint\.com$
+(^|\.)sharepointonline\.com$
+(^|\.)skype\.com$
+(^|\.)static\.microsoft$
+(^|\.)windows\.com$
+(^|\.)windows\.net$
+(^|\.)windowsupdate\.com$
+(^|\.)xboxlive\.com$
+
+# myTV SUPER
+(^|\.)mytvsuper\.com$
+
+# Netflix
+(^|\.)fast\.com$
+(^|\.)netflix\.com$
+(^|\.)netflix\.net$
+(^|\.)nflxext\.com$
+(^|\.)nflximg\.com$
+(^|\.)nflximg\.net$
+(^|\.)nflxso\.net$
+(^|\.)nflxvideo\.net$
+
+# Pinterest
+(^|\.)pinimg\.com$
+(^|\.)pinterest\.com$
+
+# Pixiv
+(^|\.)pixiv\.net$
+(^|\.)pximg\.net$
+
+# Resilio Sync
+(^|\.)getsync\.com$
+(^|\.)resilio\.com$
+
+# Readdle / Spark
+(^|\.)readdle\.com$
+(^|\.)smartmailcloud\.com$
+
+# Spotify
+(^|\.)scdn\.co$
+(^|\.)spotify\.com$
+(^|\.)spotifycdn\.com$
+
+# Steam
+(^|\.)steam-chat\.com$
+(^|\.)steamcommunity\.com$
+(^|\.)steamcontent\.com$
+(^|\.)steamgames\.com$
+(^|\.)steampowered\.com$
+(^|\.)steamstatic\.com$
+(^|\.)steamusercontent\.com$
+
+# Telegram
+(^|\.)t\.me$
+(^|\.)tdesktop\.com$
+(^|\.)telegra\.ph$
+(^|\.)telegram\.me$
+(^|\.)telegram\.org$
+(^|\.)telesco\.pe$
+
+# TeraBox
+(^|\.)terabox\.com$
+(^|\.)teraboxcdn\.com$
+
+# Twitch
+(^|\.)jtvnw\.net$
+(^|\.)twitch\.tv$
+(^|\.)twitchcdn\.net$
+(^|\.)ttvnw\.net$
+
+# X / Twitter
+(^|\.)x\.com$
+(^|\.)twitter\.com$
+(^|\.)t\.co$
+(^|\.)twimg\.com$
+(^|\.)ads-twitter\.com$
+
+# WhatsApp
+(^|\.)wa\.me$
+(^|\.)whatsapp\.com$
+(^|\.)whatsapp\.net$
+
+# Wikimedia
+(^|\.)mediawiki\.org$
+(^|\.)wikibooks\.org$
+(^|\.)wikidata\.org$
+(^|\.)wikimedia\.org$
+(^|\.)wikinews\.org$
+(^|\.)wikipedia\.org$
+(^|\.)wikiquote\.org$
+(^|\.)wikisource\.org$
+(^|\.)wikiversity\.org$
+(^|\.)wikivoyage\.org$
+(^|\.)wiktionary\.org$
