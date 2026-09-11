@@ -17,7 +17,7 @@
 Shadowrocket 自上而下匹配，第一条命中规则生效，因此顺序本身就是策略的一部分：
 
 1. 局域网、回环地址和 Apple 网络认证入口优先直连，避免影响本地设备发现及 Wi-Fi 登录。
-2. 本仓库维护的 `proxy-all.list` 优先匹配明确的境外服务并交给 `PROXY`。其中包括 Telegram、GitHub、Google、AI、流媒体等分类。
+2. 本仓库维护的 `proxy-all.list` 优先匹配明确的境外服务并交给 `PROXY`。其中包括 Telegram、GitHub、Google、AI、流媒体、数字资产交易所、钱包及链上基础设施等分类。
 3. 本仓库维护的 `china-direct.list` 匹配使用 `.com`、`.net` 等非大陆顶级域名的大陆服务并直连。
 4. `.cn` 及中文国家域名属于确定性较高的大陆域名，直接本地匹配。
 5. 已经获得目标 IP 时，`GEOIP,CN` 可将中国大陆地址直连；`no-resolve` 禁止仅为判断地域而额外进行 DNS 查询。

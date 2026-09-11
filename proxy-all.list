@@ -1,14 +1,8 @@
 # Shadowrocket RULE-SET
+# Updated: 2026-09-11
 # Maintained by this repository; policy is assigned by shadowrocket.conf.
-
-# Proxy ACL
-# Updated: 2026-09-08
-#
-# Default traffic policy: proxy.
-# Advertising and tracking domains are intentionally not blocked.
+# Advertising and tracking domains are not blocked.
 # Domain rules are preferred because service IP and CDN ranges change often.
-# The proxy_list is retained for ACL client compatibility and documentation.
-# 默认代理；未匹配流量也通过代理，广告可以正常加载。
 # 常用服务
 DOMAIN-SUFFIX,1password.com
 DOMAIN-SUFFIX,adguard.com
@@ -222,6 +216,69 @@ DOMAIN-SUFFIX,ads-twitter.com
 DOMAIN-SUFFIX,wa.me
 DOMAIN-SUFFIX,whatsapp.com
 DOMAIN-SUFFIX,whatsapp.net
+# Digital assets: exchanges
+DOMAIN-SUFFIX,binance.com
+DOMAIN-SUFFIX,binance.us
+DOMAIN-SUFFIX,okx.com
+DOMAIN-SUFFIX,okcoin.com
+DOMAIN-SUFFIX,bybit.com
+DOMAIN-SUFFIX,bitget.com
+DOMAIN-SUFFIX,gate.io
+DOMAIN-SUFFIX,kucoin.com
+DOMAIN-SUFFIX,mexc.com
+DOMAIN-SUFFIX,coinbase.com
+DOMAIN-SUFFIX,coinbaseassets.com
+DOMAIN-SUFFIX,kraken.com
+DOMAIN-SUFFIX,kraken.tech
+DOMAIN-SUFFIX,crypto.com
+DOMAIN-SUFFIX,gemini.com
+DOMAIN-SUFFIX,deribit.com
+DOMAIN-SUFFIX,bitfinex.com
+DOMAIN-SUFFIX,bitstamp.net
+# Digital assets: market data
+DOMAIN-SUFFIX,coinmarketcap.com
+DOMAIN-SUFFIX,coingecko.com
+DOMAIN-SUFFIX,tradingview.com
+DOMAIN-SUFFIX,cryptocompare.com
+# Digital assets: wallets
+DOMAIN-SUFFIX,metamask.io
+DOMAIN-SUFFIX,ledger.com
+DOMAIN-SUFFIX,trezor.io
+DOMAIN-SUFFIX,phantom.com
+DOMAIN-SUFFIX,phantom.app
+DOMAIN-SUFFIX,walletconnect.com
+DOMAIN-SUFFIX,trustwallet.com
+DOMAIN-SUFFIX,rabby.io
+DOMAIN-SUFFIX,safepal.com
+DOMAIN-SUFFIX,exodus.com
+# Digital assets: explorers and infrastructure
+DOMAIN-SUFFIX,etherscan.io
+DOMAIN-SUFFIX,bscscan.com
+DOMAIN-SUFFIX,arbiscan.io
+DOMAIN-SUFFIX,polygonscan.com
+DOMAIN-SUFFIX,basescan.org
+DOMAIN-SUFFIX,infura.io
+DOMAIN-SUFFIX,alchemy.com
+DOMAIN-SUFFIX,chainstack.com
+DOMAIN-SUFFIX,quicknode.com
+DOMAIN-SUFFIX,blockchair.com
+DOMAIN-SUFFIX,blockchain.com
+# Digital assets: protocols and networks
+DOMAIN-SUFFIX,uniswap.org
+DOMAIN-SUFFIX,aave.com
+DOMAIN-SUFFIX,opensea.io
+DOMAIN-SUFFIX,curve.fi
+DOMAIN-SUFFIX,lido.fi
+DOMAIN-SUFFIX,pancakeswap.finance
+DOMAIN-SUFFIX,compound.finance
+DOMAIN-SUFFIX,bitcoin.org
+DOMAIN-SUFFIX,ethereum.org
+DOMAIN-SUFFIX,solana.com
+DOMAIN-SUFFIX,bnbchain.org
+DOMAIN-SUFFIX,polygon.technology
+DOMAIN-SUFFIX,arbitrum.io
+DOMAIN-SUFFIX,optimism.io
+DOMAIN-SUFFIX,avalanche.network
 # Wikimedia
 DOMAIN-SUFFIX,mediawiki.org
 DOMAIN-SUFFIX,wikibooks.org
