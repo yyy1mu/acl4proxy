@@ -1,6 +1,7 @@
 # Mainland China direct domains for Shadowrocket
 # Baseline: ACL4SSR ChinaDomain.list, downloaded 2026-09-11.
 # Locally curated: broad keywords, IP rules, duplicates and overseas conflicts removed.
+# Local additions updated: 2026-09-24.
 
 # 直连列表
 # MyList
@@ -78,6 +79,8 @@ DOMAIN-SUFFIX,xiami.net
 DOMAIN-SUFFIX,ykimg.com
 DOMAIN-SUFFIX,youku.com
 DOMAIN-SUFFIX,qwen.ai
+DOMAIN-SUFFIX,qianwen.com
+DOMAIN-SUFFIX,tongyi.com
 # Baidu
 DOMAIN-SUFFIX,baidu.com
 DOMAIN-SUFFIX,baidubcr.com
@@ -218,6 +221,7 @@ DOMAIN-SUFFIX,oppomobile.com
 DOMAIN-SUFFIX,iflyink.com
 DOMAIN-SUFFIX,iflyrec.com
 DOMAIN-SUFFIX,iflytek.com
+DOMAIN-SUFFIX,xf-yun.com
 # Iqiyi
 DOMAIN-SUFFIX,71.am
 DOMAIN-SUFFIX,71edge.com
@@ -345,6 +349,8 @@ DOMAIN-SUFFIX,smtcdns.com
 DOMAIN-SUFFIX,soso.com
 DOMAIN-SUFFIX,tencent-cloud.net
 DOMAIN-SUFFIX,tencent.com
+DOMAIN-SUFFIX,tencentcloud.com
+DOMAIN-SUFFIX,tencentcloudapi.com
 DOMAIN-SUFFIX,tencentmind.com
 DOMAIN-SUFFIX,tenpay.com
 DOMAIN-SUFFIX,wechat.com
@@ -640,16 +646,32 @@ DOMAIN-SUFFIX,95516.com
 # Local additions: current mainland AI and cloud services
 DOMAIN-SUFFIX,deepseek.com
 DOMAIN-SUFFIX,kimi.com
+DOMAIN-SUFFIX,kimi.ai
+DOMAIN-SUFFIX,kimi.chat
+DOMAIN-SUFFIX,moonshot.ai
 DOMAIN-SUFFIX,doubao.com
 DOMAIN-SUFFIX,volcengine.com
 DOMAIN-SUFFIX,volcengineapi.com
 DOMAIN-SUFFIX,volcenginepaas.com
 DOMAIN-SUFFIX,minimax.chat
+DOMAIN-SUFFIX,minimaxi.com
+DOMAIN-SUFFIX,minimax.io
 DOMAIN-SUFFIX,hailuoai.com
+DOMAIN-SUFFIX,hailuo.ai
 DOMAIN-SUFFIX,baichuan-ai.com
 DOMAIN-SUFFIX,stepfun.com
 DOMAIN-SUFFIX,sensetime.com
 DOMAIN-SUFFIX,siliconflow.com
+DOMAIN-SUFFIX,01.ai
+DOMAIN-SUFFIX,z.ai
+DOMAIN-SUFFIX,klingai.com
+DOMAIN-SUFFIX,vidu.com
+DOMAIN-SUFFIX,shengshu.com
+DOMAIN-SUFFIX,liblib.art
+DOMAIN-SUFFIX,senseavatar.com
+DOMAIN-SUFFIX,longcat.ai
+DOMAIN-SUFFIX,longcat.chat
+DOMAIN-SUFFIX,ant-ling.com
 
 # Local additions: commerce, delivery, payment and application CDNs
 DOMAIN-SUFFIX,kuaishoucdn.com
@@ -658,3 +680,36 @@ DOMAIN-SUFFIX,didichuxing.com
 DOMAIN-SUFFIX,cainiao.com
 DOMAIN-SUFFIX,pddpic.com
 DOMAIN-SUFFIX,unionpay.com
+
+# Local additions: finance and payment
+DOMAIN-SUFFIX,ccb.com
+DOMAIN-SUFFIX,pingan.com
+DOMAIN-SUFFIX,lu.com
+DOMAIN-SUFFIX,lakala.com
+DOMAIN-SUFFIX,lianlianpay.com
+
+# Local additions: logistics
+DOMAIN-SUFFIX,zto.com
+DOMAIN-SUFFIX,yundaex.com
+DOMAIN-SUFFIX,jdl.com
+DOMAIN-SUFFIX,jingdonglogistics.com
+
+# Local additions: developer and cloud platforms
+DOMAIN-SUFFIX,gitee.com
+DOMAIN-SUFFIX,qingcloud.com
+
+# Local additions: mainland vehicle services
+DOMAIN-SUFFIX,nio.com
+DOMAIN-SUFFIX,xiaopeng.com
+DOMAIN-SUFFIX,lixiang.com
+DOMAIN-SUFFIX,zeekr.com
+DOMAIN-SUFFIX,geely.com
+DOMAIN-SUFFIX,bydglobal.com
+
+# Local additions: mainland hardware and smart-home services
+DOMAIN-SUFFIX,dji.com
+DOMAIN-SUFFIX,insta360.com
+DOMAIN-SUFFIX,roborock.com
+DOMAIN-SUFFIX,dreame.tech
+DOMAIN-SUFFIX,ecovacs.com
+DOMAIN-SUFFIX,ecovacsgroup.com

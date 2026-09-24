@@ -41,7 +41,7 @@ Shadowrocket 自上而下匹配，第一条命中规则生效，因此顺序本�
 - `proxy-all.list` 是 Shadowrocket 原生代理规则，维护明确需要代理的境外服务。
 - `china-direct.list` 是仓库维护的大陆直连域名规则，覆盖使用非 `.cn` 域名的常用大陆服务。
 
-`china-direct.list` 以 ACL4SSR 的 `ChinaDomain.list` 为初始基线，并在 2026-09-11 完成本地整理：删除容易误伤的 `DOMAIN-KEYWORD`、IP 规则、重复项、明确的境外服务以及与代理表冲突的条目；补充常见的大陆 AI、云服务、电商、支付和静态资源域名。此后它作为本仓库规则独立维护，不会自动跟随上游变化。原始项目采用 [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.zh) 发布，本文件的衍生部分沿用相同许可并保留来源署名。
+`china-direct.list` 以 ACL4SSR 的 `ChinaDomain.list` 为初始基线，并在本仓库持续整理：删除容易误伤的 `DOMAIN-KEYWORD`、IP 规则、重复项、明确的境外服务以及与代理表冲突的条目；补充常见的大陆 AI、云服务、开发平台、电商物流、金融支付、汽车、智能硬件和静态资源域名。大陆服务使用 `.com`、`.ai`、`.io`、`.tech` 等非 `.cn` 域名时，以经官方页面确认的完整域名后缀收录，而不是只依赖 `.cn`。此后它作为本仓库规则独立维护，不会自动跟随上游变化。原始项目采用 [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.zh) 发布，本文件的衍生部分沿用相同许可并保留来源署名。
 
 代理规则放在大陆直连规则之前。若两个列表意外出现同一域名，`PROXY` 优先，避免境外服务因规则冲突而直连。未匹配域名同样由 `FINAL,PROXY` 保守兜底。
 
@@ -51,6 +51,6 @@ Shadowrocket 自上而下匹配，第一条命中规则生效，因此顺序本�
 - 不增加广告 `REJECT` 规则；如需广告拦截，应另建独立配置，避免改变本项目语义。
 - 不引用第三方远程规则；所有显式域名由本仓库维护。
 - `proxy-all.list` 和 `china-direct.list` 不得包含相同域名；若出现边界争议，优先保守地走代理。
-- 大陆服务必须确认其归属和主要使用区域后才能加入 `china-direct.list`；全球服务、境外站点和仅有中国 CDN 的服务不因此直连。
+- 大陆服务必须通过公司官网或官方 API 文档确认域名及主要使用区域后才能加入 `china-direct.list`；全球服务、境外站点和仅有中国 CDN 的服务不因此直连。
 - 优先使用 `DOMAIN` 和 `DOMAIN-SUFFIX`，不使用容易误伤无关域名的 `DOMAIN-KEYWORD`。
 - 修改 DNS 或开启 IPv6 后，应分别测试直连域名、代理域名、节点域名、UDP 与 WebRTC 泄漏。
