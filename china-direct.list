@@ -1,7 +1,7 @@
 # Mainland China direct domains for Shadowrocket
 # Baseline: ACL4SSR ChinaDomain.list, downloaded 2026-09-11.
 # Locally curated: broad keywords, IP rules, duplicates and overseas conflicts removed.
-# Local additions updated: 2026-09-24.
+# Local additions updated: 2026-09-25.
 
 # 直连列表
 # MyList
@@ -713,3 +713,38 @@ DOMAIN-SUFFIX,roborock.com
 DOMAIN-SUFFIX,dreame.tech
 DOMAIN-SUFFIX,ecovacs.com
 DOMAIN-SUFFIX,ecovacsgroup.com
+
+# Local additions: Apple activation, updates, App Store and mainland iCloud
+DOMAIN,account.apple.com
+DOMAIN,albert.apple.com
+DOMAIN,appldnld.apple.com
+DOMAIN,captive.apple.com
+DOMAIN,configuration.apple.com
+DOMAIN,gdmf.apple.com
+DOMAIN,gg.apple.com
+DOMAIN,gs.apple.com
+DOMAIN,gsa.apple.com
+DOMAIN,idmsa.apple.com
+DOMAIN,ig.apple.com
+DOMAIN,mesu.apple.com
+DOMAIN,ppq.apple.com
+DOMAIN,time.apple.com
+DOMAIN,time-ios.apple.com
+DOMAIN,time-macos.apple.com
+DOMAIN-SUFFIX,push.apple.com
+DOMAIN-SUFFIX,apps.apple.com
+DOMAIN-SUFFIX,itunes.apple.com
+DOMAIN-SUFFIX,itunes.com
+DOMAIN-SUFFIX,mzstatic.com
+DOMAIN-SUFFIX,cdn-apple.com
+DOMAIN-SUFFIX,apple-cloudkit.com
+DOMAIN-SUFFIX,apple-livephotoskit.com
+DOMAIN-SUFFIX,apzones.com
+DOMAIN-SUFFIX,gc.apple.com
+DOMAIN-SUFFIX,icloud.com
+DOMAIN-SUFFIX,icloud.apple.com
+DOMAIN-SUFFIX,icloud-content.com
+DOMAIN-SUFFIX,iwork.apple.com
+DOMAIN-SUFFIX,apple-dns.net
+DOMAIN-SUFFIX,apple-mapkit.com
+DOMAIN-SUFFIX,networking.apple

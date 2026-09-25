@@ -1,5 +1,5 @@
 # Shadowrocket RULE-SET
-# Updated: 2026-09-11
+# Updated: 2026-09-25
 # Maintained by this repository; policy is assigned by shadowrocket.conf.
 # Advertising and tracking domains are not blocked.
 # Domain rules are preferred because service IP and CDN ranges change often.
@@ -32,6 +32,11 @@ DOMAIN-SUFFIX,oaistatic.com
 DOMAIN-SUFFIX,oaiusercontent.com
 DOMAIN-SUFFIX,openai.com
 DOMAIN-SUFFIX,perplexity.ai
+# Apple services unavailable or relay-based in mainland China
+DOMAIN,mask.icloud.com
+DOMAIN,mask-h2.icloud.com
+DOMAIN,mask-api.icloud.com
+DOMAIN,apple-relay.apple.com
 # Amazon / AWS
 DOMAIN-SUFFIX,amazon.com
 DOMAIN-SUFFIX,amazon.co.jp
