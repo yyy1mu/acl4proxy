@@ -43,6 +43,8 @@ Shadowrocket 自上而下匹配，第一条命中规则生效，因此顺序本�
 
 `china-direct.list` 以 ACL4SSR 的 `ChinaDomain.list` 为初始基线，并在本仓库持续整理：删除容易误伤的 `DOMAIN-KEYWORD`、IP 规则、重复项、明确的境外服务以及与代理表冲突的条目；补充常见的大陆 AI、云服务、开发平台、电商物流、金融支付、汽车、智能硬件和静态资源域名。大陆服务使用 `.com`、`.ai`、`.io`、`.tech` 等非 `.cn` 域名时，以经官方页面确认的完整域名后缀收录，而不是只依赖 `.cn`。此后它作为本仓库规则独立维护，不会自动跟随上游变化。原始项目采用 [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.zh) 发布，本文件的衍生部分沿用相同许可并保留来源署名。
 
+AI 分流以服务归属和可用区域为边界。大陆模型官网、API 与对象存储入口加入 `china-direct.list`；境外基础模型厂商、聚合 API、研究助手和 AI 编程工具加入 `proxy-all.list`。Google Gemini、Microsoft Copilot、GitHub Copilot、Meta AI 等复用集团基础设施的产品，由集团父域规则与必要的产品域共同覆盖。规则只维护稳定的服务域名，不收录会随调度变化的 CDN CNAME 或服务 IP；尚未显式收录的境外 AI 服务仍由 `FINAL,PROXY` 兜底。
+
 Apple 规则按功能拆分：设备激活、系统更新、Apple 账户、App Store 内容、推送通知和 iCloud 数据域名直连，其中中国大陆 iCloud 由云上贵州运营；不使用 `DOMAIN-SUFFIX,apple.com` 全量放行，以免把 Apple Intelligence、Siri 搜索或其他具有区域差异的服务一并固定为直连。`mask.icloud.com`、`mask-h2.icloud.com`、`mask-api.icloud.com` 和 `apple-relay.apple.com` 属于专用代理或中继服务，显式放在 `proxy-all.list`，并利用代理列表优先级覆盖较宽的 iCloud 直连后缀。
 
 代理规则放在大陆直连规则之前。若两个列表意外出现同一域名，`PROXY` 优先，避免境外服务因规则冲突而直连。未匹配域名同样由 `FINAL,PROXY` 保守兜底。

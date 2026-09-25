@@ -1,7 +1,7 @@
 # Mainland China direct domains for Shadowrocket
 # Baseline: ACL4SSR ChinaDomain.list, downloaded 2026-09-11.
 # Locally curated: broad keywords, IP rules, duplicates and overseas conflicts removed.
-# Local additions updated: 2026-09-25.
+# Local additions updated: 2026-09-26.
 
 # 直连列表
 # MyList
@@ -644,6 +644,7 @@ DOMAIN-SUFFIX,cmbchina.com
 DOMAIN-SUFFIX,95516.com
 
 # Local additions: current mainland AI and cloud services
+DOMAIN-SUFFIX,baidubce.com
 DOMAIN-SUFFIX,deepseek.com
 DOMAIN-SUFFIX,kimi.com
 DOMAIN-SUFFIX,kimi.ai
@@ -653,6 +654,8 @@ DOMAIN-SUFFIX,doubao.com
 DOMAIN-SUFFIX,volcengine.com
 DOMAIN-SUFFIX,volcengineapi.com
 DOMAIN-SUFFIX,volcenginepaas.com
+DOMAIN-SUFFIX,volces.com
+DOMAIN-SUFFIX,ivolces.com
 DOMAIN-SUFFIX,minimax.chat
 DOMAIN-SUFFIX,minimaxi.com
 DOMAIN-SUFFIX,minimax.io

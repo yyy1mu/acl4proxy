@@ -1,5 +1,5 @@
 # Shadowrocket RULE-SET
-# Updated: 2026-09-25
+# Updated: 2026-09-26
 # Maintained by this repository; policy is assigned by shadowrocket.conf.
 # Advertising and tracking domains are not blocked.
 # Domain rules are preferred because service IP and CDN ranges change often.
@@ -24,14 +24,69 @@ DOMAIN-SUFFIX,kr
 DOMAIN-SUFFIX,sg
 DOMAIN-SUFFIX,tw
 DOMAIN-SUFFIX,uk
-# AI
+# AI: foundation model providers
+DOMAIN-SUFFIX,ai21.com
 DOMAIN-SUFFIX,anthropic.com
+DOMAIN-SUFFIX,cerebras.ai
 DOMAIN-SUFFIX,claude.ai
+DOMAIN-SUFFIX,claude.com
 DOMAIN-SUFFIX,chatgpt.com
+DOMAIN-SUFFIX,cohere.ai
+DOMAIN-SUFFIX,cohere.com
+DOMAIN-SUFFIX,fireworks.ai
+DOMAIN-SUFFIX,groq.com
+DOMAIN-SUFFIX,huggingface.co
+DOMAIN-SUFFIX,huggingface.com
+DOMAIN-SUFFIX,hf.co
+DOMAIN-SUFFIX,hf.space
+DOMAIN-SUFFIX,mistral.ai
 DOMAIN-SUFFIX,oaistatic.com
 DOMAIN-SUFFIX,oaiusercontent.com
 DOMAIN-SUFFIX,openai.com
+DOMAIN-SUFFIX,openrouter.ai
 DOMAIN-SUFFIX,perplexity.ai
+DOMAIN-SUFFIX,replicate.com
+DOMAIN-SUFFIX,sambanova.ai
+DOMAIN-SUFFIX,together.ai
+DOMAIN-SUFFIX,x.ai
+DOMAIN-SUFFIX,grok.com
+# AI: enterprise inference platforms
+DOMAIN-SUFFIX,cloudflare.com
+DOMAIN-SUFFIX,databricks.com
+DOMAIN-SUFFIX,ibm.com
+DOMAIN-SUFFIX,nvidia.com
+DOMAIN-SUFFIX,oraclecloud.com
+DOMAIN-SUFFIX,snowflake.com
+DOMAIN-SUFFIX,snowflakecomputing.com
+# AI: assistants and research services
+DOMAIN-SUFFIX,character.ai
+DOMAIN-SUFFIX,consensus.app
+DOMAIN-SUFFIX,elicit.com
+DOMAIN-SUFFIX,genspark.ai
+DOMAIN-SUFFIX,inflection.ai
+DOMAIN-SUFFIX,jasper.ai
+DOMAIN-SUFFIX,manus.im
+DOMAIN-SUFFIX,meta.ai
+DOMAIN-SUFFIX,pi.ai
+DOMAIN-SUFFIX,poe.com
+DOMAIN-SUFFIX,scite.ai
+DOMAIN-SUFFIX,you.com
+# AI: coding and application builders
+DOMAIN-SUFFIX,augmentcode.com
+DOMAIN-SUFFIX,bolt.new
+DOMAIN-SUFFIX,codeium.com
+DOMAIN-SUFFIX,codeiumdata.com
+DOMAIN-SUFFIX,cognition.ai
+DOMAIN-SUFFIX,cursor.com
+DOMAIN-SUFFIX,cursor.sh
+DOMAIN-SUFFIX,devin.ai
+DOMAIN-SUFFIX,lovable.dev
+DOMAIN-SUFFIX,phind.com
+DOMAIN-SUFFIX,replit.com
+DOMAIN-SUFFIX,stackblitz.com
+DOMAIN-SUFFIX,tabnine.com
+DOMAIN-SUFFIX,v0.dev
+DOMAIN-SUFFIX,windsurf.com
 # Apple services unavailable or relay-based in mainland China
 DOMAIN,mask.icloud.com
 DOMAIN,mask-h2.icloud.com
@@ -92,6 +147,7 @@ DOMAIN-SUFFIX,github.io
 DOMAIN-SUFFIX,github.blog
 DOMAIN-SUFFIX,githubapp.com
 DOMAIN-SUFFIX,githubassets.com
+DOMAIN-SUFFIX,githubcopilot.com
 DOMAIN-SUFFIX,githubstatus.com
 DOMAIN-SUFFIX,githubusercontent.com
 DOMAIN-SUFFIX,ghcr.io
@@ -108,6 +164,7 @@ DOMAIN-SUFFIX,gvt0.com
 DOMAIN-SUFFIX,gvt1.com
 DOMAIN-SUFFIX,gvt2.com
 DOMAIN-SUFFIX,gvt3.com
+# Gemini uses the Google domains above.
 # YouTube
 DOMAIN-SUFFIX,googlevideo.com
 DOMAIN-SUFFIX,youtu.be
@@ -161,6 +218,7 @@ DOMAIN-SUFFIX,windows.com
 DOMAIN-SUFFIX,windows.net
 DOMAIN-SUFFIX,windowsupdate.com
 DOMAIN-SUFFIX,xboxlive.com
+# Microsoft Copilot uses the Microsoft, Bing and Live domains above.
 # myTV SUPER
 DOMAIN-SUFFIX,mytvsuper.com
 # Netflix
