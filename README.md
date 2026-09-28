@@ -2,11 +2,9 @@
 
 面向 Shadowrocket 的中国大陆分流配置：大陆流量直连，其余流量默认代理，不拦截广告。
 
-## 配置地址
+## 配置使用
 
-`https://raw.githubusercontent.com/yyy1mu/acl4proxy/main/shadowrocket.conf`
-
-在 Shadowrocket 的“配置”页面下载并选中此文件，然后将全局路由设为“配置”。配置不包含节点，`PROXY` 会使用首页当前选择的节点。
+将本地 `shadowrocket.conf` 导入 Shadowrocket，在“配置”页面选中它，然后将全局路由设为“配置”。配置不包含节点，`PROXY` 会使用首页当前选择的节点。本地独立版不设置 `update-url`，不会自动从 GitHub 更新或覆盖。
 
 ## 设计目标
 
@@ -17,18 +15,18 @@
 Shadowrocket 自上而下匹配，第一条命中规则生效，因此顺序本身就是策略的一部分：
 
 1. 局域网、回环地址和 Apple 网络认证入口优先直连，避免影响本地设备发现及 Wi-Fi 登录。
-2. 本仓库维护的 `proxy-all.list` 优先匹配明确的境外服务并交给 `PROXY`。其中包括 Telegram、GitHub、Google、AI、流媒体、数字资产交易所、钱包及链上基础设施等分类。
-3. 本仓库维护的 `china-direct.list` 匹配使用 `.com`、`.net` 等非大陆顶级域名的大陆服务并直连。
+2. 内嵌的境外规则优先匹配明确的境外服务并交给 `PROXY`。其中包括 Telegram、GitHub、Google、AI、流媒体、数字资产交易所、钱包及链上基础设施等分类。
+3. 内嵌的大陆规则匹配使用 `.com`、`.net` 等非大陆顶级域名的大陆服务并直连。
 4. `.cn` 及中文国家域名属于确定性较高的大陆域名，直接本地匹配。
 5. 已经获得目标 IP 时，`GEOIP,CN` 可将中国大陆地址直连；`no-resolve` 禁止仅为判断地域而额外进行 DNS 查询。
 6. 其余全部走 `PROXY`。广告和追踪域名不会被 `REJECT`，只是和其他未匹配流量一样通过代理访问。
 
 ## DNS 与防泄漏逻辑
 
-- 直连域名使用 DNSPod 和 AliDNS 的加密 DNS，以获得更适合大陆网络的解析结果。
-- 代理域名由所选代理节点远程解析，不先在本地查询境外 DNS。
-- 代理节点自身的域名必须在隧道建立前解析，因此使用大陆加密 DNS 引导，避免 DNS 与代理互相依赖形成死循环。
-- 禁止系统 DNS 回退，并劫持应用硬编码的传统 53 端口 DNS。备用解析器仍使用加密 DoT。
+- 所有 DNS 路径只使用 Cloudflare `https://1.1.1.1/dns-query` 和 Google `https://8.8.8.8/dns-query` 两个 DoH 端点。
+- 普通、直连、代理和备用 DNS 使用同一组服务器，不再向 DNSPod、AliDNS、360 DNS 或系统解析器发送请求。
+- 使用 IP 形式的 DoH 地址，避免解析 DoH 服务器域名时再次依赖其他 DNS；`#no-h3` 禁止 DoH 使用 HTTP/3，统一经 TCP/TLS 传输。
+- 禁止系统 DNS 回退，并劫持应用硬编码的传统 53 端口 DNS。
 - 默认关闭 IPv6，防止尚未验证的双栈环境绕过规则。确认本地网络和代理节点均正确支持 IPv6 后再手动开启。
 - 代理节点不支持 UDP 时直接拒绝，而不是悄悄改为直连；同时阻止代理流量使用 QUIC，促使其回退到更容易审计的 TCP/TLS。
 
@@ -36,16 +34,13 @@ Shadowrocket 自上而下匹配，第一条命中规则生效，因此顺序本�
 
 ## 自维护规则
 
-本配置运行时只引用本仓库中的规则文件，不直接依赖第三方远程列表：
+`shadowrocket.conf` 是唯一规则源，已内嵌全部代理与直连域名，运行时不下载本仓库或第三方的远程规则。维护时直接编辑配置中的两个分类区块，并始终保持境外代理区块位于大陆直连区块之前。
 
-- `proxy-all.list` 是 Shadowrocket 原生代理规则，维护明确需要代理的境外服务。
-- `china-direct.list` 是仓库维护的大陆直连域名规则，覆盖使用非 `.cn` 域名的常用大陆服务。
+大陆直连区块以 ACL4SSR 的 `ChinaDomain.list` 为初始基线，并在本仓库持续整理：删除容易误伤的 `DOMAIN-KEYWORD`、IP 规则、重复项、明确的境外服务以及与代理规则冲突的条目；补充常见的大陆 AI、云服务、开发平台、电商物流、金融支付、汽车、智能硬件和静态资源域名。大陆服务使用 `.com`、`.ai`、`.io`、`.tech` 等非 `.cn` 域名时，以经官方页面确认的完整域名后缀收录，而不是只依赖 `.cn`。该区块不会自动跟随上游变化。原始项目采用 [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.zh) 发布，本配置中对应的衍生部分沿用相同许可并保留来源署名。
 
-`china-direct.list` 以 ACL4SSR 的 `ChinaDomain.list` 为初始基线，并在本仓库持续整理：删除容易误伤的 `DOMAIN-KEYWORD`、IP 规则、重复项、明确的境外服务以及与代理表冲突的条目；补充常见的大陆 AI、云服务、开发平台、电商物流、金融支付、汽车、智能硬件和静态资源域名。大陆服务使用 `.com`、`.ai`、`.io`、`.tech` 等非 `.cn` 域名时，以经官方页面确认的完整域名后缀收录，而不是只依赖 `.cn`。此后它作为本仓库规则独立维护，不会自动跟随上游变化。原始项目采用 [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.zh) 发布，本文件的衍生部分沿用相同许可并保留来源署名。
+AI 分流以服务归属和可用区域为边界。大陆模型官网、API 与对象存储入口使用 `DIRECT`；境外基础模型厂商、聚合 API、研究助手和 AI 编程工具使用 `PROXY`。Google Gemini、Microsoft Copilot、GitHub Copilot、Meta AI 等复用集团基础设施的产品，由集团父域规则与必要的产品域共同覆盖。规则只维护稳定的服务域名，不收录会随调度变化的 CDN CNAME 或服务 IP；尚未显式收录的境外 AI 服务仍由 `FINAL,PROXY` 兜底。
 
-AI 分流以服务归属和可用区域为边界。大陆模型官网、API 与对象存储入口加入 `china-direct.list`；境外基础模型厂商、聚合 API、研究助手和 AI 编程工具加入 `proxy-all.list`。Google Gemini、Microsoft Copilot、GitHub Copilot、Meta AI 等复用集团基础设施的产品，由集团父域规则与必要的产品域共同覆盖。规则只维护稳定的服务域名，不收录会随调度变化的 CDN CNAME 或服务 IP；尚未显式收录的境外 AI 服务仍由 `FINAL,PROXY` 兜底。
-
-Apple 规则按功能拆分：设备激活、系统更新、Apple 账户、App Store 内容、推送通知和 iCloud 数据域名直连，其中中国大陆 iCloud 由云上贵州运营；不使用 `DOMAIN-SUFFIX,apple.com` 全量放行，以免把 Apple Intelligence、Siri 搜索或其他具有区域差异的服务一并固定为直连。`mask.icloud.com`、`mask-h2.icloud.com`、`mask-api.icloud.com` 和 `apple-relay.apple.com` 属于专用代理或中继服务，显式放在 `proxy-all.list`，并利用代理列表优先级覆盖较宽的 iCloud 直连后缀。
+Apple 规则按功能拆分：设备激活、系统更新、Apple 账户、App Store 内容、推送通知和 iCloud 数据域名直连，其中中国大陆 iCloud 由云上贵州运营；不使用 `DOMAIN-SUFFIX,apple.com` 全量放行，以免把 Apple Intelligence、Siri 搜索或其他具有区域差异的服务一并固定为直连。`mask.icloud.com`、`mask-h2.icloud.com`、`mask-api.icloud.com` 和 `apple-relay.apple.com` 属于专用代理或中继服务，显式使用 `PROXY`，并利用规则顺序覆盖较宽的 iCloud 直连后缀。
 
 代理规则放在大陆直连规则之前。若两个列表意外出现同一域名，`PROXY` 优先，避免境外服务因规则冲突而直连。未匹配域名同样由 `FINAL,PROXY` 保守兜底。
 
@@ -54,7 +49,7 @@ Apple 规则按功能拆分：设备激活、系统更新、Apple 账户、App S
 - 特例只在确有误分流时添加，并放在导致误分流的宽泛规则之前。
 - 不增加广告 `REJECT` 规则；如需广告拦截，应另建独立配置，避免改变本项目语义。
 - 不引用第三方远程规则；所有显式域名由本仓库维护。
-- `proxy-all.list` 和 `china-direct.list` 不得包含相同域名；若出现边界争议，优先保守地走代理。
-- 大陆服务必须通过公司官网或官方 API 文档确认域名及主要使用区域后才能加入 `china-direct.list`；全球服务、境外站点和仅有中国 CDN 的服务不因此直连。
+- 同一域名不得同时配置互相冲突的策略；若出现边界争议，优先保守地走代理。
+- 大陆服务必须通过公司官网或官方 API 文档确认域名及主要使用区域后才能加入直连区块；全球服务、境外站点和仅有中国 CDN 的服务不因此直连。
 - 优先使用 `DOMAIN` 和 `DOMAIN-SUFFIX`，不使用容易误伤无关域名的 `DOMAIN-KEYWORD`。
 - 修改 DNS 或开启 IPv6 后，应分别测试直连域名、代理域名、节点域名、UDP 与 WebRTC 泄漏。
