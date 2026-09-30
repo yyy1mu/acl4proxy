@@ -23,9 +23,10 @@ Shadowrocket 自上而下匹配，第一条命中规则生效，因此顺序本�
 
 ## DNS 与防泄漏逻辑
 
-- 所有 DNS 路径只使用 Cloudflare `https://1.1.1.1/dns-query` 和 Google `https://8.8.8.8/dns-query` 两个 DoH 端点。
-- 普通、直连、代理和备用 DNS 使用同一组服务器，不再向 DNSPod、AliDNS、360 DNS 或系统解析器发送请求。
-- 使用 IP 形式的 DoH 地址，避免解析 DoH 服务器域名时再次依赖其他 DNS；`#no-h3` 禁止 DoH 使用 HTTP/3，统一经 TCP/TLS 传输。
+- 默认、代理和备用 DNS 使用 Cloudflare `https://1.1.1.1/dns-query` 与 Google `https://8.8.8.8/dns-query`。
+- 确定走 `DIRECT` 的大陆域名使用 DNSPod `https://doh.pub/dns-query` 与 AliDNS `https://dns.alidns.com/dns-query`，以获得更合适的大陆 CDN 和地域解析结果。
+- DNSPod 和 AliDNS 的 DoH 主机具有前置 `DIRECT` 规则；不固定其服务 IP，避免服务商调整集群后继续命中过期地址。
+- 所有 DoH 地址使用 `#no-h3`，禁止 HTTP/3，统一经 TCP/TLS 传输。
 - 禁止系统 DNS 回退，并劫持应用硬编码的传统 53 端口 DNS。
 - 默认关闭 IPv6，防止尚未验证的双栈环境绕过规则。确认本地网络和代理节点均正确支持 IPv6 后再手动开启。
 - 代理节点不支持 UDP 时直接拒绝，而不是悄悄改为直连；同时阻止代理流量使用 QUIC，促使其回退到更容易审计的 TCP/TLS。
